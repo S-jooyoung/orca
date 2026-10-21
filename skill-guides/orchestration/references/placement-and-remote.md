@@ -69,8 +69,11 @@ ORCA orchestration worker-list --run <run_id> --include-remote --json
 `--include-remote` or every one of them reads `unverifiable`. Scope every list
 with `--run <run_id>`: unscoped, it lists only the Run bound to the calling
 terminal, or every Run this runtime has recorded when that terminal is
-unbound, so the same command returns a different fleet depending on where it
-runs. The receipt's `scope.source` (`flag`, `bound`, or `all`) names which.
+unbound or its binding cannot be read, so the same command returns a different
+fleet depending on where it runs. The receipt's `scope.source` (`flag`,
+`bound`, or `all`) names which; `all` does not prove the terminal is unbound,
+because a missing live terminal or a runtime that predates
+`orchestration.runCurrent` also falls back to it.
 
 ## Execution-host and mixed-version floor
 
